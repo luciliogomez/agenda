@@ -1,7 +1,13 @@
-<div>
-    <h2>LISTA DE CONTACTOS</h2>
-</div>
+@extends('layouts.app')
 
+@section('title',"Home")
+
+
+
+@section('content')
+<div>
+    <h2 class=" bg-red-500 text-white ">LISTA DE CONTACTOS</h2>
+</div>
 <div>
     @foreach($pessoas as $pessoa)
         <ul>
@@ -11,4 +17,5 @@
         </ul>
     @endforeach
 </div>
+@endsection
 
