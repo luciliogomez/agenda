@@ -2,18 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pessoa;
 use Illuminate\Http\Request;
 
-class PessoaController extends Controller
+class GrupoController extends Controller
 {
-
-    protected $repository;
-
-    public function __construct( Pessoa $pessoa)
-    {
-        $this->repository = $pessoa;
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,12 +13,7 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        $pessoas = Pessoa::all();
-        
-        return view("contactos.index",[
-            "pessoas" => $pessoas
-        ]);
-        
+        //
     }
 
     /**
