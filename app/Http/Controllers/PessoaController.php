@@ -7,6 +7,7 @@ use App\Models\Contacto;
 use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PessoaController extends Controller
 {
@@ -24,6 +25,8 @@ class PessoaController extends Controller
      */
     public function index()
     {
+        // Storage::disk('public')->put('example2.txt', 'Contents');
+        // exit;
         $pessoas = (new Pessoa)->orderBy('id','desc')->get();
         
         return view("contactos.index",[
@@ -56,12 +59,22 @@ class PessoaController extends Controller
         DB::beginTransaction();
         try{
 
+            if ($request->hasFile('foto')) {
+                $foto = $request->file("foto");
+
+                if( !(in_array(strtolower($foto->extension()),['jpg','png'] )) )
+                {
+                    return redirect()->back()->with("error","Formato de imagem não suportado");
+                }
+
+                $path = $foto->store('images',"public");
+            }
             
             $id = DB::table('pessoas')->insertGetId(
                 [
                     'nome' => $request->nome,
                     'endereco' => $request->endereco,
-                    'foto' => $request->input('foto','null')
+                    'foto' => $path??'img/1.jpg'
                 ]
             );
 

@@ -8,7 +8,7 @@
         <div class=" px-4 py-4 flex justify-start items-center border-b-2 border-b-gray-300">
             <div class="flex flex-col justify-center items-center">
                 <div class="mr-8">
-                    <img src="{{asset('img/1.jpg')}}" class="w-20 h-20 rounded-md " alt="">
+                    <img src='{{ asset("storage/$pessoa->foto") }}' class="w-20 h-20 rounded-md " alt="">
                 </div>
             </div>
             <div>
@@ -17,6 +17,12 @@
             </div>
         </div>
         <div class="px-4 py-4 mt-12">
+            @if(session('sucess'))
+                <p class="text-green-500 text-center">{{ session('sucess') }}</p>
+            @endif
+            @if(session('error'))
+                <p class="text-red-500 text-center">{{ session('error') }}</p>
+            @endif
             <div class="mb-2">
                 <a href="{{ route('pessoas.create-contacto',$pessoa->id) }}" class="bg-blue-500 text-white px-2 py-1 rounded-md">+</a>
             </div>
@@ -32,9 +38,9 @@
                         @endif
                     </div>
                     <div>
-                        <a href="#" class="mr-1 text-white bg-blue-500 px-2 py-1 rounded-md text-md">
+                        <a href="{{ route('contactos.edit',$contacto->id)}}" class="mr-1 text-white bg-blue-500 px-2 py-1 rounded-md text-md">
                             <i class="fa fa-pencil"></i></a>
-                        <a href="#" class=" mr-1 text-white bg-red-500 px-2 py-1 rounded-md text-md">
+                        <a href="{{ route('contactos.delete',$contacto->id)}}" class=" mr-1 text-white bg-red-500 px-2 py-1 rounded-md text-md">
                             <i class="fa fa-trash"></i>
                         </a>
                     </div>

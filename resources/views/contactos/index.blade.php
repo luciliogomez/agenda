@@ -19,7 +19,7 @@
             @foreach($pessoas as $pessoa)
                 <a href="{{route('pessoas.show',$pessoa->id)}}" class="fav ">
                         <div class="mr-8">
-                                <img src="{{asset('img/1.jpg')}}" class="pic-circle " alt="">
+                                <img src='{{ asset("storage/$pessoa->foto") }}' class="pic-circle " alt="">
                         </div>
                         <div >
                             <h3 class="text-sm">{{$pessoa->nome}}</h3>
