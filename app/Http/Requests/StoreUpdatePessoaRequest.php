@@ -13,7 +13,7 @@ class StoreUpdatePessoaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class StoreUpdatePessoaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "nome"=>"required|min:3",
+            "endereco"=>"required"
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            "nome.required" => "O nome é obrigatório",
+            "endereco.required" => "O endereço é obrigatório"
         ];
     }
 }

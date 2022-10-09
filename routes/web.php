@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::resource("pessoas",PessoaController::class);
+Route::get("/pessoas/{id}/create-contacto",[PessoaController::class,'createContacto'])->name("pessoas.create-contacto");
+Route::post("/pessoas/store-contacto",[PessoaController::class,'storeContacto'])->name("pessoas.store-contacto");

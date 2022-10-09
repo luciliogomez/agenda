@@ -18,13 +18,18 @@
         </div>
         <div class="px-4 py-4 mt-12">
             <div class="mb-2">
-                <a href="#" class="bg-blue-500 text-white px-2 py-1 rounded-md">+</a>
+                <a href="{{ route('pessoas.create-contacto',$pessoa->id) }}" class="bg-blue-500 text-white px-2 py-1 rounded-md">+</a>
             </div>
             <div class="flex flex-col justify-start ">
+                @foreach($contactos as $contacto)
                 <div class="px-2 py-2 flex justify-between items-center  mb-4 border border-gray-200 rounded-sm">
                     <div class="flex flex-col justify-start">
-                        <h4 class="text-gray-400">Phone: <span class="text-gray-700" >943 812 726</span></h4>
-                        <h4 class="text-gray-400">Email: <span class="text-gray-700">luciliodetales@gmail.com</span></h4>
+                        @if(isset($contacto->telefone))
+                        <h4 class="text-gray-400">Phone: <span class="text-gray-700" >{{ $contacto->telefone }}</span></h4>
+                        @endif
+                        @if(isset($contacto->email))
+                        <h4 class="text-gray-400">Email: <span class="text-gray-700">{{ $contacto->email }}</span></h4>
+                        @endif
                     </div>
                     <div>
                         <a href="#" class="mr-1 text-white bg-blue-500 px-2 py-1 rounded-md text-md">
@@ -34,6 +39,7 @@
                         </a>
                     </div>
                 </div>
+                @endforeach
 
 
             </div>

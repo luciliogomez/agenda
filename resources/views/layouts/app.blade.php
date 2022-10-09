@@ -13,7 +13,7 @@
     <div class=" h-full w-full">
         <div class="fixed h-full sidebar bg-gray-700  w-1/5 flex flex-col justify-start border-gray-200 border-r-2 shadow-sm shadow-gray-400">
             <div class="px-1 py-2  border-gray-100 border-b-2">
-                <a href="#" class=" px-2 py-3 flex justify-center items-center">
+                <a href="/" class=" px-2 py-3 flex justify-center items-center">
                         <span class="mr-3 px-3 py-1 bg-blue-200 text-blue-500 text-3xl font-bold rounded-md">C</span>
                         <span class="text-xl font-bold text-white">Contactos</span>
                 </a>
