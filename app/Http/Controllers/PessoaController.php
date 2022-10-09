@@ -37,6 +37,9 @@ class PessoaController extends Controller
     public function create()
     {
         //
+        return view("pessoas.create",[
+            
+        ]);
     }
 
     /**
@@ -59,6 +62,10 @@ class PessoaController extends Controller
     public function show($id)
     {
         //
+        $pessoa = (new Pessoa())->find($id);
+        return view("contactos.show",[
+            "pessoa" => $pessoa
+        ]);
     }
 
     /**
