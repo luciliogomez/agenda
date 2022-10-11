@@ -7,8 +7,9 @@
 @section('content')
     <div class=" bg-white">
         <div class=" px-4 py-4 flex justify-between items-center border-b-2 border-b-gray-300">
-            <form action="" method="post"class=" flex ">
-                <input type="text" placeholder="Pesquisar" class="m-0 px-3 py-2 border border-gray-400 text-md rounded-l-md text-gray-600">
+            <form action="{{ route('pessoas.search') }}" method="post" class=" flex ">
+                @csrf
+                <input type="text" name="search" value="{{$search ?? ''}}"  placeholder="Pesquisar" class="m-0 px-3 py-2 border border-gray-400 text-md rounded-l-md text-gray-600">
                 <button type="submit" class="bg-blue-500 text-white m-0 px-3 py-2 rounded-r-md border border-gray-400"><i class="fa fa-search"></i></button>
             </form>
             <a href="{{route('pessoas.create')}}" class="bg-blue-500 text-white px-2 py-1 rounded-full center ">+ Adicionar</a>
@@ -23,7 +24,14 @@
                         </div>
                         <div >
                             <h3 class="text-sm">{{$pessoa->nome}}</h3>
-                            <h5 class="text-gray-500  text-xs">{{$pessoa->endereco}}</h5>
+                            <!-- <h5 class="text-gray-500  text-xs">{{$pessoa->endereco}}</h5> -->
+                            @if(isset($pessoa->telefone))
+                                <h5 class="text-gray-500  text-xs">{{$pessoa->telefone}}</h5>
+                            @elseif(isset($pessoa->email))
+                                <h5 class="text-gray-500  text-xs">{{$pessoa->email}}</h5>
+                            @else
+                                <h5 class="text-gray-500  text-xs">{{$pessoa->endereco}}</h5>        
+                            @endif
                         </div>
 
                 </a>

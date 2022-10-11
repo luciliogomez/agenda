@@ -24,7 +24,7 @@
                         <a href="{{route('pessoas.index')}}" class="link "><i class="fa fa-list"></i> Meus Contactos</a>
                     </li>
                     <li>
-                        <a href="#" class="link"> <i class="fa fa-users"></i> Grupos</a>
+                        <a href="{{route('grupos.index')}}" class="link"> <i class="fa fa-users"></i> Grupos</a>
                     </li>
                     <li>
                         <a href="#" class="link"><i class="fa fa-user "></i> Meu Perfil</a>

@@ -27,10 +27,44 @@ class PessoaController extends Controller
     {
         // Storage::disk('public')->put('example2.txt', 'Contents');
         // exit;
-        $pessoas = (new Pessoa)->orderBy('id','desc')->get();
-        
+        $pessoas = (new Pessoa)->orderBy('nome','asc')->get();
+        foreach($pessoas as $pessoa)
+        {
+            $contact = (new Contacto())->select("telefone","email")
+                                    ->where("id_pessoa",$pessoa->id)
+                                        ->first();
+            // dd($phone->telefone);
+            if(isset($contact->telefone)){
+                $pessoa->telefone = $contact->telefone;
+            }
+            if(isset($contact->email)){
+                $pessoa->email = $contact->email;
+            }
+        }
         return view("contactos.index",[
             "pessoas" => $pessoas
+        ]);
+        
+    }
+    public function search(Request $request)
+    {
+        $searchString = $request->search ?? '';
+        $pessoas = (new Pessoa)->where("nome","LIKE","%{$searchString}%")->orderBy('nome','asc')->get();
+        foreach($pessoas as $pessoa)
+        {
+            $contact = (new Contacto())->select("telefone","email")
+                                        ->where("id_pessoa",$pessoa->id)
+                                        ->first();
+            if(isset($contact->telefone)){
+                $pessoa->telefone = $contact->telefone;
+            }
+            if(isset($contact->email)){
+                $pessoa->email = $contact->email;
+            }
+        }
+        return view("contactos.index",[
+            "pessoas" => $pessoas,
+            "search"  => $searchString
         ]);
         
     }
@@ -74,7 +108,7 @@ class PessoaController extends Controller
                 [
                     'nome' => $request->nome,
                     'endereco' => $request->endereco,
-                    'foto' => $path??'img/1.jpg'
+                    'foto' => $path ?? 'img/1.jpg'
                 ]
             );
 
