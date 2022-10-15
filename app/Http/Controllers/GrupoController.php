@@ -213,7 +213,32 @@ class GrupoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::beginTransaction();
+            
+        try{
+
+            $pessoas = DB::table("grupos_pessoas")
+            ->where("grupos_pessoas.id_grupo","=",$id)->get();
+            
+            foreach($pessoas as $pessoa)
+            {
+                
+                 $affected = DB::table("grupos_pessoas")
+                 ->where("grupos_pessoas.id","=",$pessoa->id)
+                 ->delete();     
+                 
+            }
+            $affected = DB::table("grupos")->where("id","=",$id)->delete();
+            DB::commit();
+            return redirect()->route("grupos.index")->with("sucess","Grupo eliminado");
+
+        }catch(\Exception $e)
+        {
+            DB::rollBack();
+            return redirect()->back()->with("error","Falha ao eliminar grupo");
+            
+        }
+
     }
 
     /**

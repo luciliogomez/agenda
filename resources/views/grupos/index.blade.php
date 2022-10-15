@@ -15,6 +15,12 @@
             <a href="{{route('grupos.create')}}" class="bg-blue-500 text-white px-2 py-1 rounded-full center ">+ Adicionar</a>
         </div>
         <div class=" px-4 py-4 ">
+        @if(session('sucess'))
+        <p class="text-green-500 ">{{ session('sucess') }}</p>
+    @endif
+    @if(session('error'))
+        <p class="text-red-500 ">{{ session('error') }}</p>
+    @endif
         <div class="mt-10 flex flex-col justify-start max-h-60 overflow-auto">
             
             @foreach($grupos as $grupo)

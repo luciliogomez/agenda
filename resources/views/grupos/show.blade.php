@@ -27,7 +27,7 @@
             </div>
             <div class="flex justify-center items-center ">
                 <a href="{{ route('grupos.edit',$grupo->id) }}" class="bg-blue-500 px-2 hover:bg-blue-800 py-1 mr-3  rounded-md text-white text-lg" title="Editar Grupo"><i class="fa fa-pencil"></i> </a>
-                <a href="#" class="bg-red-500 px-2 hover:bg-red-800 py-1 mr-3  rounded-md text-white text-lg" title="Eliminar Grupo"><i class="fa fa-trash"></i> </a>
+                <a href="{{ route('grupos.destroy',$grupo->id) }}" class="bg-red-500 px-2 hover:bg-red-800 py-1 mr-3  rounded-md text-white text-lg" title="Eliminar Grupo"><i class="fa fa-trash"></i> </a>
             
             </div>
         </div>

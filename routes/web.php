@@ -32,6 +32,7 @@ Route::get("/grupos",[GrupoController::class,'index'])->name("grupos.index");
 Route::get("/grupos/{id}/show",[GrupoController::class,'show'])->name("grupos.show");
 Route::get("/grupos/create",[GrupoController::class,'create'])->name("grupos.create");
 Route::post("/grupos/search",[GrupoController::class,'search'])->name("grupos.search");
+Route::get("/grupos/{id}/destroy",[GrupoController::class,'destroy'])->name("grupos.destroy");
 Route::post("/grupos/store",[GrupoController::class,'store'])->name("grupos.store");
 Route::get("/grupos/{id}/add-contacto",[GrupoController::class,'addContacto'])->name("grupos.add-contacto");
 Route::post("/grupos/{id}/store-contacto",[GrupoController::class,'storeContacto'])->name("grupos.store-contacto");
