@@ -72,7 +72,7 @@ class GrupoController extends Controller
             }
         }catch(\Exception $e)
         {
-            return redirect()->back()->with("error","Grupo não adicionado[{$e->getMessage()}]");
+            return redirect()->back()->with("error","Grupo não adicionado");
         }
     }
 

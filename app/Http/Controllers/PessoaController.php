@@ -124,7 +124,7 @@ class PessoaController extends Controller
         }catch(\Exception $e)
         {
             DB::rollBack();
-            return redirect()->back()->with("error","Contacto não cadastrado[{$e->getMessage()}]");
+            return redirect()->back()->with("error","Contacto não cadastrado");
         }
     }
 
@@ -186,7 +186,7 @@ class PessoaController extends Controller
             }
         }catch(\Exception $e)
         {
-            return redirect()->back()->with("error","Contacto não adicionado[{$e->getMessage()}]");
+            return redirect()->back()->with("error","Contacto não adicionado");
         }
     }
     /**

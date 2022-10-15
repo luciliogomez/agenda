@@ -39,7 +39,7 @@ class ContactoController extends Controller
             }
         }catch(\Exception $ex)
         {
-            return redirect()->back()->with("error","Contacto nao alterdo [{$ex->getMessage()}]");
+            return redirect()->back()->with("error","Contacto nao alterdo ");
         }
     }
     public function delete($id)
@@ -52,7 +52,7 @@ class ContactoController extends Controller
         }
         catch(\Exception $e)
         {
-            return redirect()->back()->with("error","Erro ao remover contacto [{$e->getMessage()}]");
+            return redirect()->back()->with("error","Erro ao remover contacto ");
         }
     }
     
