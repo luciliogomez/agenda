@@ -261,4 +261,16 @@ class GrupoController extends Controller
         }
         
     }
+
+    public function search(Request $request)
+    {
+        $searchString = $request->search ?? '';
+        $grupos = (new Grupo)->where("nome","LIKE","%{$searchString}%")->orderBy('nome','asc')->get();
+        
+        return view("grupos.index",[
+            "grupos" => $grupos,
+            "search"  => $searchString
+        ]);
+        
+    }
 }
