@@ -581,6 +581,12 @@ video {
 .w-2\/6 {
   width: 33.333333%;
 }
+.w-3\/5 {
+  width: 60%;
+}
+.w-11\/12 {
+  width: 91.666667%;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -913,6 +919,14 @@ video {
 .hover\:bg-red-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
+}
+.hover\:bg-red-900:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(127 29 29 / var(--tw-bg-opacity));
 }
 .hover\:text-white:hover {
   --tw-text-opacity: 1;

@@ -37,3 +37,4 @@ Route::get("/grupos/{id}/add-contacto",[GrupoController::class,'addContacto'])->
 Route::post("/grupos/{id}/store-contacto",[GrupoController::class,'storeContacto'])->name("grupos.store-contacto");
 Route::get("/grupos/{id}/edit",[GrupoController::class,'edit'])->name("grupos.edit");
 Route::put("/grupos/{id}/update",[GrupoController::class,'update'])->name("grupos.update");
+Route::get("/grupos/{id}/remove-contacto",[GrupoController::class,'removeContacto'])->name("grupos.remove-contacto");

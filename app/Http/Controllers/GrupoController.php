@@ -89,7 +89,7 @@ class GrupoController extends Controller
         $pessoas = DB::table("grupos_pessoas")
                             ->join("pessoas","grupos_pessoas.id_pessoa","=","pessoas.id")
                             ->where("grupos_pessoas.id_grupo","=",$id)
-                            ->select("pessoas.*")
+                            ->select("pessoas.*","grupos_pessoas.id as id_grupo_pessoa")
                             ->get();
 
         return view("grupos.show",[
@@ -214,5 +214,26 @@ class GrupoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Remove the specified Contact from group.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function removeContacto($id)
+    {
+        //
+        $affected = DB::table("grupos_pessoas")
+                    ->where("grupos_pessoas.id","=",$id)
+                    ->delete();
+        if($affected)
+        {
+            return redirect()->back()->with("sucess","Contacto removido do grupo");
+        }else{
+            return redirect()->back()->with("sucess","Falha ao remover contacto do grupo");
+        }
+        
     }
 }

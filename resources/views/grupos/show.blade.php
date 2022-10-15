@@ -43,34 +43,34 @@
             </div>
             <div class="flex flex-col justify-start ">
                 @foreach($pessoas as $dado)
-                <a href="{{route('pessoas.show',$dado->id)}}" class="fav ">
-                        <div class="mr-8">
-                                <img src='{{ asset("storage/$dado->foto") }}' class="pic-circle " alt="">
-                        </div>
-                        <div >
-                            <h3 class="text-sm">{{$dado->nome}}</h3>
-                            <h5 class="text-gray-500  text-xs">{{$dado->endereco}}</h5>
-                            
-                        </div>
+                <div class="flex justify-start items-center">
+                    <div class=" w-11/12 mr-5">
+                        <a href="{{route('pessoas.show',$dado->id)}}" class="fav ">
+                            <div> 
+                                <figure class=""> 
+                                    @if(empty($dado->foto))
+                                        <div class="mr-8 pic-circle  bg-gray-500 flex justify-center items-center">
+                                            <span class=" text-white text-2xl"><i class="fa fa-user"></i></span>
+                                        </div>
+                                    @else
+                                        <div class="mr-8">
+                                            <img src='{{ asset("storage/$dado->foto") }}' class="pic-circle" alt="">
+                                        </div>
+                                    @endif
+                                </figure>
+                            </div>
+                            <div >
+                                <h3 class="text-sm">{{$dado->nome}}</h3>
+                                <h5 class="text-gray-500  text-xs">{{$dado->endereco}}</h5>
 
-                </a>
-                <!-- <div class="px-2 py-2 flex justify-between items-center  mb-4 border border-gray-200 rounded-sm">
-                    <div class="flex flex-col justify-start">
-                        @if(isset($dado->telefone))
-                        <h4 class="text-gray-400">Phone: <span class="text-gray-700" >{{ $grupo->id }}</span></h4>
-                        @endif
-                        @if(isset($contacto->email))
-                        <h4 class="text-gray-400">Email: <span class="text-gray-700">{{ $grupo->id }}</span></h4>
-                        @endif
-                    </div>
-                    <div>
-                        <a href="{{ route('contactos.edit',$grupo->id)}}" class="mr-1 text-white bg-blue-500 px-2 py-1 rounded-md text-md">
-                            <i class="fa fa-pencil"></i></a>
-                        <a href="{{ route('contactos.delete',$grupo->id)}}" class=" mr-1 text-white bg-red-500 px-2 py-1 rounded-md text-md">
-                            <i class="fa fa-trash"></i>
+                            </div>
+
                         </a>
                     </div>
-                </div> -->
+                    <div>
+                        <a href="{{route('grupos.remove-contacto',$dado->id_grupo_pessoa)}}" title="Remover contacto do grupo" class="text-white bg-red-500 hover:bg-red-900 rounded-md px-2 py-1 text-lg"><i class="fa fa-trash "></i></a>
+                    </div>
+                </div>
                 @endforeach
 
 
