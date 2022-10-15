@@ -19,9 +19,19 @@
             
             @foreach($pessoas as $pessoa)
                 <a href="{{route('pessoas.show',$pessoa->id)}}" class="fav ">
-                        <div class="mr-8">
-                                <img src='{{ asset("storage/$pessoa->foto") }}' class="pic-circle " alt="">
-                        </div>
+                    <div> 
+                    <figure class=""> 
+                        @if(empty($pessoa->foto))
+                            <div class="mr-8 pic-circle  bg-gray-500 flex justify-center items-center">
+                                <span class=" text-white text-2xl"><i class="fa fa-user"></i></span>
+                            </div>
+                        @else
+                            <div class="mr-8">
+                                <img src='{{ asset("storage/$pessoa->foto") }}' class="pic-circle" alt="">
+                            </div>
+                        @endif
+                    </figure>
+                </div>
                         <div >
                             <h3 class="text-sm">{{$pessoa->nome}}</h3>
                             <!-- <h5 class="text-gray-500  text-xs">{{$pessoa->endereco}}</h5> -->

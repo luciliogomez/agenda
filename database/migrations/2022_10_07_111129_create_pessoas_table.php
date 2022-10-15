@@ -15,7 +15,7 @@ class CreatePessoasTable extends Migration
     {
         Schema::create('pessoas', function (Blueprint $table) {
             $table->bigIncrements("id");
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->string('nome');
             $table->string('endereco');
             $table->timestamps();

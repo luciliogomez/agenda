@@ -35,3 +35,5 @@ Route::post("/grupos/search",[GrupoController::class,'search'])->name("grupos.se
 Route::post("/grupos/store",[GrupoController::class,'store'])->name("grupos.store");
 Route::get("/grupos/{id}/add-contacto",[GrupoController::class,'addContacto'])->name("grupos.add-contacto");
 Route::post("/grupos/{id}/store-contacto",[GrupoController::class,'storeContacto'])->name("grupos.store-contacto");
+Route::get("/grupos/{id}/edit",[GrupoController::class,'edit'])->name("grupos.edit");
+Route::put("/grupos/{id}/update",[GrupoController::class,'update'])->name("grupos.update");

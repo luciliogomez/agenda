@@ -19,13 +19,27 @@
             
             @foreach($grupos as $grupo)
                 <a href="{{route('grupos.show',$grupo->id)}}" class="fav ">
-                        <div class="mr-8">
+                    <div class="">
+                        <figure class=""> 
+                            @if(empty($grupo->foto))
+                                <div class="mr-8 pic-circle  bg-gray-500 flex justify-center items-center">
+                                    <span class=" text-white text-2xl "><i class="fa fa-users"></i></span>
+                                </div>
+                            @else
+                                <div class="mr-8">
+                                    <img src='{{ asset("storage/$grupo->foto") }}' class="pic-circle" alt="">
+                                </div>
+                            @endif
+                        </figure>
+                    </div>
+                        <!-- <div class="mr-8">
                                 <img src='{{ asset("storage/$grupo->foto") }}' class="pic-circle " alt="">
-                        </div>
+                        </div> -->
                         <div >
                             <h3 class="text-sm">{{$grupo->nome}}</h3>
                             <h5 class="text-gray-500  text-xs">{{$grupo->created_at}}</h5>
                         </div>
+                        
                 </a>
             @endforeach
             

@@ -108,7 +108,7 @@ class PessoaController extends Controller
                 [
                     'nome' => $request->nome,
                     'endereco' => $request->endereco,
-                    'foto' => $path ?? 'img/1.jpg'
+                    'foto' => $path ?? ''
                 ]
             );
 

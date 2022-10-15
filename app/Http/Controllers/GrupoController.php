@@ -151,6 +151,13 @@ class GrupoController extends Controller
     public function edit($id)
     {
         //
+        $grupo = (new Grupo())->find($id);
+        if($grupo){
+            return view("grupos.edit",[
+                "grupo"=>$grupo
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -163,6 +170,39 @@ class GrupoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $grupo = (new Grupo())->find($id);
+        if(!$grupo){
+            return redirect()->back()->with("error","Falha ao salvar dados");
+        }
+        try{
+
+            if( empty($request->nome)  ){
+                return redirect()->back()->with("error","Nome do grupo é obrigatório");
+                
+            }else{
+                if ($request->hasFile('foto')) {
+                    $foto = $request->file("foto");
+    
+                    if( !(in_array(strtolower($foto->extension()),['jpg','png'] )) )
+                    {
+                        return redirect()->back()->with("error","Formato de imagem não suportado");
+                    }
+    
+                    $path = $foto->store('images',"public");
+                }
+
+                // $grupo = new Grupo();
+                $grupo->nome = $request->nome;
+                $grupo->foto = $path??$grupo->foto;
+
+                $grupo->update();
+                
+                return redirect()->back()->with("sucess","Alterações salvas ");
+            }
+        }catch(\Exception $e)
+        {
+            return redirect()->back()->with("error","Alterações não salvas [{$e->getMessage()}]");
+        }
     }
 
     /**

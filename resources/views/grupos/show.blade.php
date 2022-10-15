@@ -7,13 +7,28 @@
 <div class=" bg-white">
         <div class=" px-4 py-4 flex justify-start items-center border-b-2 border-b-gray-300">
             <div class="flex flex-col justify-center items-center">
-                <div class="mr-8">
-                    <img src='{{ asset("storage/$grupo->foto") }}' class="w-20 h-20 rounded-md " alt="">
+                <div class="">
+                    <figure class=""> 
+                        @if(empty($grupo->foto))
+                            <div class="mr-8 w-20 h-20 rounded-md bg-gray-500 flex justify-center items-center">
+                                <span class=" text-white text-4xl"><i class="fa fa-users"></i></span>
+                            </div>
+                        @else
+                            <div class="mr-8">
+                                <img src='{{ asset("storage/$grupo->foto") }}' class="w-20 h-20 rounded-md " alt="">
+                            </div>
+                        @endif
+                    </figure>
                 </div>
             </div>
             <div>
-                <h3 class="font-bold text-lg text-gray-600">{{$grupo->nome}}</h3>
+                <h3 class="font-bold text-lg text-gray-600 mr-20">{{$grupo->nome}}</h3>
                 <h4 class="text-gray-400">{{count($pessoas)}} elementos</h4>
+            </div>
+            <div class="flex justify-center items-center ">
+                <a href="{{ route('grupos.edit',$grupo->id) }}" class="bg-blue-500 px-2 hover:bg-blue-800 py-1 mr-3  rounded-md text-white text-lg" title="Editar Grupo"><i class="fa fa-pencil"></i> </a>
+                <a href="#" class="bg-red-500 px-2 hover:bg-red-800 py-1 mr-3  rounded-md text-white text-lg" title="Eliminar Grupo"><i class="fa fa-trash"></i> </a>
+            
             </div>
         </div>
         <div class="px-4 py-4 mt-12">

@@ -7,8 +7,18 @@
 <div class=" bg-white">
         <div class=" px-4 py-4 flex justify-start items-center border-b-2 border-b-gray-300">
             <div class="flex flex-col justify-center items-center">
-                <div class="mr-8">
-                    <img src='{{ asset("storage/$pessoa->foto") }}' class="w-20 h-20 rounded-md " alt="">
+                <div class="">
+                    <figure class=""> 
+                        @if(empty($pessoa->foto))
+                            <div class="mr-8 w-20 h-20 rounded-md bg-gray-500 flex justify-center items-center">
+                                <span class=" text-white text-4xl"><i class="fa fa-user"></i></span>
+                            </div>
+                        @else
+                            <div class="mr-8">
+                                <img src='{{ asset("storage/$pessoa->foto") }}' class="w-20 h-20 rounded-md " alt="">
+                            </div>
+                        @endif
+                    </figure>
                 </div>
             </div>
             <div>

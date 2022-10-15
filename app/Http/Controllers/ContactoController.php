@@ -26,7 +26,7 @@ class ContactoController extends Controller
     {
         try{
             if( empty($request->telefone) && empty($request->email) ){
-                return redirect()->back()->with("error","Contacto não adicionado");
+                return redirect()->back()->with("error","Contacto não alterado");
                 
             }else{
             $contacto = (new Contacto())->find($request->id);
